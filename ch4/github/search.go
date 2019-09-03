@@ -10,11 +10,19 @@ import (
 
 // SearchIssues faz uma consulta ao sistema de acompanhamento de problemas do GitHub
 func SearchIssues(terms []string) (*IssuesSearchResult, error) {
-	q := url.QueryEscape(strings.Join(terms, ""))
-	resp, err := http.Get(IssuesURL + "?q=" + q)
+	q := url.QueryEscape(strings.Join(terms, " "))
+	// resp, err := http.Get(IssuesURL + "?q=" + q)
+	// if err != nil {
+	// 	return nil, err
+	// }
+
+	req, err := http.NewRequest("GET", IssuesURL+"?q="+q, nil)
 	if err != nil {
 		return nil, err
 	}
+	req.Header.Set(
+		"Accept", "application/vnd.github.v3.text-match+json")
+	resp, err := http.DefaultClient.Do(req)
 
 	// Devemos fechar resp.Body em todos os paths de execução
 	if resp.StatusCode != http.StatusOK {

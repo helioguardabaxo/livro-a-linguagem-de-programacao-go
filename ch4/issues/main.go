@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"/home/helio/projetos/go/src/github.com/helioguardabaxo/livro-a-linguagem-de-programacao-go/ch4/github"
+	"github.com/helioguardabaxo/livro-a-linguagem-de-programacao-go/ch4/github"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 	}
 	fmt.Printf("%d issues:\n", result.TotalCount)
 	for _, item := range result.Items {
-		fmt.Printf("#%-5d %9.0s %.55s\n",
+		fmt.Printf("#%-5d %9.9s %.55s\n",
 			item.Number, item.User.Login, item.Title)
 	}
 }
