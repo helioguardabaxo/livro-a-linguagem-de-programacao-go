@@ -3,7 +3,7 @@ package github
 import "time"
 
 // IssuesURL ...
-const IssuesURL = "https://api.gitgub.com/search/issues"
+const IssuesURL = "https://api.github.com/search/issues"
 
 // IssuesSearchResult ...
 type IssuesSearchResult struct {
